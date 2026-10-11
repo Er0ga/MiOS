@@ -6,6 +6,14 @@
     <meta name="description" content="MiOS — a portfolio disguised as a browser-based operating system." />
     <title>MiOS</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="apps/projects/projects.css" />
+    <link rel="stylesheet" href="apps/grapheneos/grapheneos.css" />
+    <link rel="stylesheet" href="apps/contact/contact.css" />
+    <link rel="stylesheet" href="apps/wallpaper/wallpaper.css" />
+    <link rel="stylesheet" href="apps/vigenere/vigenere.css" />
+    <link rel="stylesheet" href="apps/sessionstats/sessionstats.css" />
+    <link rel="stylesheet" href="apps/terminal/terminal.css" />
+    <link rel="stylesheet" href="apps/notes/notes.css" />
     <script>
       /* apply the saved wallpaper and skip the boot screen before the first paint */
       try {
@@ -19,8 +27,13 @@
   <body>
     <!-- boot screen -->
     <div id="boot" class="boot" aria-hidden="true">
-      <div class="boot-logo"><span class="boot-mark"></span>MiOS</div>
+      <div class="boot-brand">
+        <div class="boot-logo"><span class="boot-mark"></span>MiOS</div>
+        <p class="boot-tagline">Welcome to my portfolio</p>
+      </div>
       <div class="boot-spinner"><span></span><span></span><span></span><span></span><span></span></div>
+      <p class="boot-status" id="bootStatus"></p>
+      <p class="boot-hint">Press any key or tap to skip</p>
     </div>
 
     <!-- topbar -->
@@ -52,6 +65,11 @@
           <h1>Hello! 👋</h1>
           <p class="lead">Welcome to <strong>MiOS</strong>, my portfolio disguised as an operating system.</p>
           <p>Instead of just reading about me, <strong>explore it</strong>.</p>
+          <div class="welcome-actions">
+            <button type="button" class="btn btn--primary" data-open="projects">See my projects</button>
+            <button type="button" class="btn" data-open="about">About me</button>
+            <button type="button" class="btn" data-open="contact">Contact</button>
+          </div>
           <ul class="hint-list">
             <li><strong>Open apps</strong> by double-clicking the desktop icons (tap on mobile), or from the dock and the top menu.</li>
             <li><strong>Move &amp; resize</strong> windows from the title bar and the bottom-right corner. Double-click a title bar to maximize.</li>
@@ -209,11 +227,65 @@
             <div class="vig-lang">
               <span id="vigLangLabel">Attack language</span>
               <div class="segmented segmented--small" role="radiogroup" aria-labelledby="vigLangLabel">
-                <button type="button" role="radio" data-lang="es" aria-checked="true">Español</button>
+                <button type="button" role="radio" data-lang="es" aria-checked="true">Spanish</button>
                 <button type="button" role="radio" data-lang="en" aria-checked="false">English</button>
               </div>
             </div>
             <p class="vig-note" id="vigLangNote"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- sessionstats window (port of SessionStats) -->
+      <section class="window is-closed" id="sessionstats" role="dialog" aria-labelledby="sessionstats-title" inert>
+        <header class="window-header">
+          <h2 class="window-title" id="sessionstats-title">SessionStats</h2>
+        </header>
+        <div class="window-body window-body--pane ss-body">
+          <div class="ss">
+            <div class="pane ss-controls">
+              <div class="ss-file">
+                <div class="ss-file-info">
+                  <strong id="ssFileName"></strong>
+                  <span id="ssFileMeta"></span>
+                </div>
+                <button type="button" class="btn btn--small" id="ssOpen">Open file…</button>
+                <input type="file" id="ssFileInput" accept=".gpx,.fit" hidden />
+              </div>
+              <p class="ss-error" id="ssError" hidden></p>
+              <p class="ss-note">
+                Drop a .gpx or .fit file here. Files are read in your browser and never uploaded.
+              </p>
+
+              <h3 class="ss-title">Fields</h3>
+              <div class="ss-fields" id="ssFields"></div>
+
+              <h3 class="ss-title" id="ssRouteLabel">Line color</h3>
+              <div class="ss-swatches" id="ssRouteColors" role="group" aria-labelledby="ssRouteLabel"></div>
+
+              <h3 class="ss-title" id="ssTextLabel">Text color</h3>
+              <div class="ss-swatches" id="ssTextColors" role="group" aria-labelledby="ssTextLabel"></div>
+
+              <h3 class="ss-title" id="ssLangLabel">Card language</h3>
+              <div class="segmented segmented--small" role="radiogroup" aria-labelledby="ssLangLabel">
+                <button type="button" role="radio" data-card-lang="en" aria-checked="true">English</button>
+                <button type="button" role="radio" data-card-lang="es" aria-checked="false">Spanish</button>
+              </div>
+            </div>
+
+            <div class="ss-stage">
+              <div class="ss-stage-head">
+                <span id="ssBgLabel">Preview</span>
+                <div class="ss-backgrounds" id="ssBackgrounds" role="group" aria-labelledby="ssBgLabel"></div>
+              </div>
+              <div class="ss-frame">
+                <canvas id="ssPreview" role="img" aria-label="Stats card preview"></canvas>
+              </div>
+              <div class="ss-stage-foot">
+                <button type="button" class="btn btn--primary ss-export" id="ssExport">Download PNG</button>
+                <span class="ss-out">1080×1706<br />transparent</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -258,7 +330,17 @@
     <!-- dock (generated in script.js) -->
     <nav id="dock" class="dock" aria-label="Dock"></nav>
 
+    <!-- the OS first, then every app (each one lives in apps/<app>/) -->
     <script src="script.js"></script>
+    <script src="apps/about/about.js"></script>
+    <script src="apps/projects/projects.js"></script>
+    <script src="apps/grapheneos/grapheneos.js"></script>
+    <script src="apps/contact/contact.js"></script>
+    <script src="apps/wallpaper/wallpaper.js"></script>
+    <script src="apps/vigenere/vigenere.js"></script>
+    <script src="apps/sessionstats/card.js"></script>
+    <script src="apps/sessionstats/sessionstats.js"></script>
+    <script src="apps/terminal/terminal.js"></script>
+    <script src="apps/notes/notes.js"></script>
   </body>
 </html>
-
