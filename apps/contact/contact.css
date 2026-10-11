@@ -1,0 +1,45 @@
+/* ---------- Contact app ---------- */
+.contact-list {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--hairline);
+  background-color: var(--surface-strong);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.contact-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.contact-link .tile {
+  width: 36px;
+  height: 36px;
+}
+
+.contact-link strong {
+  display: block;
+  font-size: 14px;
+}
+
+.contact-link small {
+  display: block;
+  color: var(--text-muted);
+}
+
+.contact-link .arrow {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--text-muted);
+}
