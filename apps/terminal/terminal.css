@@ -1,0 +1,85 @@
+/* ---------- Terminal app ---------- */
+.window--dark {
+  background-color: rgba(18, 20, 28, 0.94);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.window--dark .window-header {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.window--dark .window-title {
+  color: #c9ccd6;
+}
+
+.window--dark:not(.is-active) .window-title {
+  color: #6e7280;
+}
+
+.window--dark .resize-handle {
+  filter: invert(1);
+}
+
+.terminal-body {
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #e6e6e6;
+  cursor: text;
+}
+
+.terminal-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: baseline;
+}
+
+.terminal-prompt,
+.term-prompt-echo {
+  color: #6ee787;
+  white-space: nowrap;
+}
+
+.terminal-prompt {
+  margin-right: 8px;
+}
+
+.terminal-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e6e6e6;
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: #6ee787;
+}
+
+.term-accent {
+  color: #6ee787;
+}
+
+.term-muted {
+  color: #8b8fa3;
+}
+
+.term-warn {
+  color: #f0c674;
+}
+
+.term-dir,
+.term-link {
+  color: #79c0ff;
+}
+
+.term-link:hover {
+  text-decoration: none;
+}
