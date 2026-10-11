@@ -1,0 +1,47 @@
+/* ---------- Sticky notes ---------- */
+.sticky-note {
+  background-color: var(--note-bg);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 3px 6px 18px rgba(0, 0, 0, 0.2);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.sticky-note.is-active {
+  box-shadow: 4px 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+.sticky-note .window-header {
+  height: 30px;
+  background-color: var(--note-header);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.sticky-note .window-title,
+.sticky-note:not(.is-active) .window-title {
+  left: 40px;
+  right: 40px;
+  color: var(--note-text);
+  opacity: 0.75;
+}
+
+.sticky-textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  padding: 10px 14px;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: var(--note-text);
+  font: 14px/1.55 var(--font-ui);
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.sticky-textarea::placeholder {
+  color: var(--note-text);
+  opacity: 0.45;
+}
