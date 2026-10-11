@@ -1,0 +1,189 @@
+/* ---------- Vigenère app ---------- */
+.vig {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vig-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.vig-panel[hidden] {
+  display: none;
+}
+
+.vig-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.vig-actions .field--inline {
+  flex: 0 1 auto;
+}
+
+.vig-actions .field--grow {
+  flex: 1;
+}
+
+.vig-output {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--surface-strong);
+}
+
+.vig-output[hidden],
+.vig-error[hidden] {
+  display: none;
+}
+
+.vig-result,
+.vig-preview {
+  margin: 0;
+  font: 13px/1.5 var(--font-mono);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.vig-note,
+.vig-stats {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.vig-stats {
+  font-variant-numeric: tabular-nums;
+}
+
+.vig-footer {
+  display: grid;
+  gap: 8px;
+  margin: auto 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+}
+
+.vig-footer .vig-note {
+  font-size: 12px;
+}
+
+.vig-lang {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.vig-error {
+  margin: 0;
+  font-size: 13px;
+  color: #c2410c;
+}
+
+.vig-results {
+  display: grid;
+  gap: 12px;
+}
+
+.vig-results:empty {
+  display: none;
+}
+
+.vig-best {
+  display: grid;
+  gap: 2px;
+  padding: 14px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--surface-strong);
+}
+
+.vig-best-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.vig-best-key {
+  font: 700 26px var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  word-break: break-all;
+}
+
+.vig-best-meta {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.vig-preview {
+  max-height: 7.5em;
+  margin-top: 8px;
+  padding: 10px;
+  overflow: auto;
+  border-radius: 8px;
+  background: var(--surface-sunken);
+}
+
+.vig-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  background: var(--surface-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--hairline);
+}
+
+.vig-table th,
+.vig-table td {
+  padding: 7px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.vig-table th {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface-sunken);
+}
+
+.vig-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.vig-table .mono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.1s linear;
+}
