@@ -24,6 +24,7 @@ A browser-based operating system with draggable windows, a live clock, an intera
 - **About me** — sidebar + content layout.
 - **Projects** — card grid generated from a JS array.
 - **Terminal** — interactive shell with a small fake file system. Type `help`.
+- - **SessionStats** — a JavaScript port of [SessionStats](https://github.com/Er0ga/SessionStats): open a `.gpx` or `.fit` workout (or drop it on the window), pick 3 fields and the colors, and download the stats card as a transparent PNG (1080×1706). Files are read in the browser and never uploaded.
 - **Vigenère** — a JavaScript port of [Pygenère](https://github.com/Ager90/Cifrado-Vigenere-Proyecto): encrypt/decrypt, statistical attack (χ² against Spanish or English letter frequencies, selectable), brute force, and a benchmark that estimates cracking time per key length.
 - **GrapheneOS Guide** — my [GrapheneOS setup guide](https://github.com/Er0ga/GrapheneOS-for-normal-usage_privacy-without-paranoia), readable inside MiOS (open it from Projects or with `open grapheneos`).
 - **Contact** — GitHub (both accounts) and LinkedIn links.
