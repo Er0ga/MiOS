@@ -1,0 +1,32 @@
+/* ---------- Wallpaper app ---------- */
+.wallpaper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 14px;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.swatch-preview {
+  display: block;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  background: var(--wallpaper);
+  box-shadow: 0 0 0 1px var(--hairline);
+  transition: transform 0.15s var(--ease-out), box-shadow 0.15s ease;
+}
+
+.swatch:hover .swatch-preview {
+  transform: translateY(-2px);
+}
+
+.swatch[aria-pressed="true"] .swatch-preview {
+  box-shadow: 0 0 0 2px var(--surface-strong), 0 0 0 4px var(--accent);
+}
